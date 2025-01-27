@@ -184,8 +184,6 @@ img {
   font-weight: 700;
   padding: 4px 4px 5px 16px;
   border-radius: 3px 0 0 3px;
-  opacity: 0;
-  visibility: hidden;
   transition: all 0.2s ease 0.1s;
   width: fit-content;
 }
@@ -256,11 +254,7 @@ img {
   display: flex;
   align-items: flex-end;
   padding: 24px;
-}
-
-.card__item:not(.hovered):hover .card__shild {
-  opacity: 1;
-  visibility: visible;
+  transition: all .2s ease 0.1s;
 }
 
 @media screen and (max-width: 991px) {
@@ -269,6 +263,11 @@ img {
     max-width: 336px;
     height: 420px;
     margin: 0 14px;
+  }
+
+  .card__item.booked .card__shild {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -301,6 +300,9 @@ img {
 }
 
 @media screen and (min-width: 992px) {
+  .card__item:hover{
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.6);
+  }
   .card__item.booked:not(:hover)::before {
     opacity: 1;
     visibility: visible;
@@ -308,6 +310,20 @@ img {
 
   .card__item.booked:not(:hover) .card__info {
     transform: translateY(0);
+  }
+
+  .card__title:hover {
+    text-decoration: underline;
+  }
+
+  .card__shild{
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .card__item:not(.hovered):hover .card__shild {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -343,10 +359,6 @@ img {
   text-decoration: none;
   width: fit-content;
   transition: color 0.2s ease;
-}
-
-.card__title:hover {
-  text-decoration: underline;
 }
 
 .card__title:active {
