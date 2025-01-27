@@ -254,7 +254,7 @@ img {
   display: flex;
   align-items: flex-end;
   padding: 24px;
-  transition: all .2s ease 0.1s;
+  transition: all 0.2s ease 0.1s;
 }
 
 @media screen and (max-width: 991px) {
@@ -300,9 +300,10 @@ img {
 }
 
 @media screen and (min-width: 992px) {
-  .card__item:hover{
-    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.6);
+  .card__item:hover {
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.6);
   }
+
   .card__item.booked:not(:hover)::before {
     opacity: 1;
     visibility: visible;
@@ -316,7 +317,7 @@ img {
     text-decoration: underline;
   }
 
-  .card__shild{
+  .card__shild {
     opacity: 0;
     visibility: hidden;
   }
