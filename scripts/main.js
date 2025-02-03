@@ -1,41 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    let cards = document.querySelectorAll('.card__item')
+    let cards = document.querySelectorAll('.card')
 
     cards.forEach((card) => {
-        let btn = card.querySelector('.card__btn');
-        let cardInfo = card.querySelector('.card__info');
+        const bookedClassName = "booked";
+        const unhoveredClassName = "unhovered";
+
+        const btn = card.querySelector('.card__btn');
 
         btn.addEventListener('click', function (event) {
             event.stopPropagation();
-            if (!card.classList.contains('booked')) {
-                card.classList.add('booked');
-                this.textContent = 'Забронировано';
+            if (!card.classList.contains(bookedClassName)) {
+                card.classList.add(bookedClassName);
             } else {
-                card.classList.remove('booked');
-                this.textContent = 'Забронировать';
+                card.classList.remove(bookedClassName);
             }
         });
+
 
         card.addEventListener('click', function (e) {
-            if (e.target.closest('.card__title') || e.target.closest('.card__info')) return false;
+            if (e.target.closest('.card__title') || e.target.closest('.card__info a')) return false;
 
-            if (this.classList.contains('booked')) {
-                this.classList.remove('booked');
-                btn.textContent = 'Забронировать';
+            if (this.classList.contains(bookedClassName)) {
+                this.classList.remove(bookedClassName);
+                this.classList.remove(unhoveredClassName);
             }
         });
 
-        cardInfo.addEventListener('mouseenter', function (e) {
-            if (card.classList.contains('booked')) {
-                card.classList.add('hovered');
-            }
-        });
-
-        cardInfo.addEventListener('mouseleave', function (e) {
-            if (card.classList.contains('booked')) {
-                card.classList.remove('hovered');
-            }
-        });
+        if (window.matchMedia("(min-width: 1280px)").matches) {
+            card.addEventListener('mouseleave', function (e) {
+                if (card.classList.contains(bookedClassName)) {
+                    card.classList.add(unhoveredClassName);
+                }
+            });
+        }
     });
 });
